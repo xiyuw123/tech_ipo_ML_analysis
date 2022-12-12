@@ -8,6 +8,8 @@ workingdir = "C:/Users/w.xiyu/Box/ML Class Project/"
 
 from scipy.stats.mstats import winsorize
 
+import matplotlib.pyplot as plt 
+
 import pandas as pd
 import datetime
 from datetime import datetime
@@ -302,11 +304,15 @@ from xgboost import plot_importance
 # t test to for MAPE significance
 filename = 'final_data_before_ipo.csv'
 
+
 label = 'week_ret'
 
 predictors = ['n_articles', 'n_articles_major', 'n_words', 
               'pos', 'neg', 'unc', 'str_m', 'weak_m']
 
+final_df = pd.read_csv(workingdir+filename)
+quarter_dummies= pd.get_dummies(final_df['quarter'])
+rating_dummies = pd.get_dummies(final_df['rating'])
 final_df = final_df.loc[final_df[label].notna()]
 y = final_df[label]*100
 y = winsorize(y, limits=[0, 0.01])
@@ -335,6 +341,9 @@ predictors = ['n_articles', 'n_articles_major', 'n_words',
               'int_underwriters', 'int_investors', 'int_sec_filing', 
               'int_analyst']
 
+final_df = pd.read_csv(workingdir+filename)
+quarter_dummies= pd.get_dummies(final_df['quarter'])
+rating_dummies = pd.get_dummies(final_df['rating'])
 final_df = final_df.loc[final_df[label].notna()]
 y = final_df[label]*100
 y = winsorize(y, limits=[0, 0.01])
@@ -360,6 +369,9 @@ label = 'week_std'
 predictors = ['n_articles', 'n_articles_major', 'n_words', 
               'pos', 'neg', 'unc', 'str_m', 'weak_m']
 
+final_df = pd.read_csv(workingdir+filename)
+quarter_dummies= pd.get_dummies(final_df['quarter'])
+rating_dummies = pd.get_dummies(final_df['rating'])
 final_df = final_df.loc[final_df[label].notna()]
 y = final_df[label]*100
 y = winsorize(y, limits=[0, 0.01])
@@ -388,6 +400,9 @@ predictors = ['n_articles', 'n_articles_major', 'n_words',
               'int_underwriters', 'int_investors', 'int_sec_filing', 
               'int_analyst']
 
+final_df = pd.read_csv(workingdir+filename)
+quarter_dummies= pd.get_dummies(final_df['quarter'])
+rating_dummies = pd.get_dummies(final_df['rating'])
 final_df = final_df.loc[final_df[label].notna()]
 y = final_df[label]*100
 y = winsorize(y, limits=[0, 0.01])
